@@ -62,23 +62,3 @@ class LogApp:
     def run(self):
         self.root.mainloop()
 
-
-# class LogApp:
-
-#     def __init__(self):
-#         print("Initializing SentinelLog...")
-
-#         self.root = tk.Tk()
-#         self.root.title("SentinelLog - Security Log Analyzer")
-#         self.root.geometry("1100x700")
-
-#         label = tk.Label(
-#             self.root,
-#             text="Welcome to SentinelLog!",
-#             font=("Arial", 24)
-#         )
-#         label.pack(pady=50)
-
-#     def run(self):
-#         print("Starting application...")
-#         self.root.mainloop()
