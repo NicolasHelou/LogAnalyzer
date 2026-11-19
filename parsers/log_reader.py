@@ -2,7 +2,8 @@ import os
 import pathlib
 
 def read_log_file(file_path):
-    if file_path.endswith(".log") or file_path.endswith(".txt") or file_path.endswith(".LOG") or file_path.endswith(".TXT"):
+    file_path = file_path.lower()
+    if file_path.endswith(".log") or file_path.endswith(".txt"):
         try:
             with open(file_path, "r", encoding="utf-8") as file:
                 lines = file.readlines()

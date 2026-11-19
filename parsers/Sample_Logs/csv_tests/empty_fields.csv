@@ -1,0 +1,5 @@
+timestamp,severity,event_type,username,source_ip
+2026-11-07 12:00:00,INFO,USER_LOGIN,bwilson,192.0.2.90
+2026-11-07 12:01:00,WARNING,FAILED_LOGIN,,198.51.100.9
+2026-11-07 12:02:00,ERROR,ACCESS_DENIED,guest,
+,INFO,USER_LOGOUT,bwilson,192.0.2.90
