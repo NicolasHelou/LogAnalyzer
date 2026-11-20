@@ -1,14 +1,20 @@
 import os
 import pathlib
 
+max_file_size = 50 * 1024 * 1024
+
 def read_log_file(file_path):
-    file_path = file_path.lower()
-    if file_path.endswith(".log") or file_path.endswith(".txt"):
+    lowercase = file_path.lower()
+    if not lowercase.endswith(".log") and not lowercase.endswith(".txt"):
+        raise ValueError("Unsupported file type")
+    file_size = os.path.getsize(file_path)
+    if file_size > max_file_size:
+        raise ValueError("File Size Too Large")
+    if lowercase.endswith(".log") or lowercase.endswith(".txt"):
         try:
             with open(file_path, "r", encoding="utf-8") as file:
-                lines = file.readlines()
                 entries = []
-                for line in lines:
+                for line in file:
                     cleaned_line = line.strip()
                     if not cleaned_line:
                         continue
@@ -16,13 +22,11 @@ def read_log_file(file_path):
                 return entries
         
         except FileNotFoundError:
-            raise FileNotFoundError("File not found")
+            raise FileNotFoundError
            
         except PermissionError:
-            raise PermissionError("Permission not granted")
+            raise PermissionError
 
         except UnicodeDecodeError:
-            raise UnicodeDecodeError("File cannot be decoded using UTF-8")
+            raise UnicodeDecodeError
     
-    if not file_path.endswith(".log", ".txt"):
-        raise ValueError("Unsupported file type")
