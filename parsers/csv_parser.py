@@ -12,13 +12,13 @@ required_headers = {
 max_file_size = 50 * 1024 * 1024
 
 def read_csv(file_path):
+    lower_file = file_path.lower()
     if not lower_file.endswith(".csv"):
         raise ValueError("Unsupported File Type")
     file_size = os.path.getsize(file_path)
     if file_size > max_file_size:
         raise ValueError("File Size Too Large")
     
-    lower_file = file_path.lower()
     if lower_file.endswith(".csv"):
         try:
             with open(file_path, "r", encoding="utf-8", newline="") as file:
